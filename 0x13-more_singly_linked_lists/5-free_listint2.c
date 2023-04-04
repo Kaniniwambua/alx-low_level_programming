@@ -1,10 +1,8 @@
-#include <stdlib>
 #include "lists.h"
+
 /**
- * free_listint2: frees all nodes of the list listint_t
- * @head: pointer to head of the node in the lists
- * Return void
- * set head pointer to NULL
+ * free_listint2 - frees a linked list
+ * @head: pointer to the listint_t list to be freed
  */
 void free_listint2(listint_t **head)
 {
@@ -12,10 +10,13 @@ void free_listint2(listint_t **head)
 
 	if (head == NULL)
 		return;
-	while (*head != NULL)
+
+	while (*head)
 	{
-		current = (*head)->current;
+		current = (*head)->next;
 		free(*head);
 		*head = current;
 	}
+
+	*head = NULL;
 }
