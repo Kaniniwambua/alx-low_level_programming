@@ -1,32 +1,39 @@
 #include "lists.h"
 
 /**
- * free_listint_safe - Frees a listint_t list
- * @head: pointer to the pointer of h
- * Return: size that was freed
+ * print_list_safe - Prints a list.
+ * @head: a pointer to the head node
+ * Return: number of nodes
  */
-size_t free_listint_safe(listint_t **head)
+size_t print_list_safe(const listint_t *head)
 {
-	listint_t *current, *next;
-	size_t i = 0;
+    const listint_t *current = head, *runner = head;
+    size_t count = 0;
 
-	if (head == NULL)
-		return (0);
+    while (current != NULL && runner != NULL && runner->next != NULL)
+    {
+        printf("[%p] %s\n", (void *)current, current->str);
+        count++;
+        current = current->next;
+        runner = runner->next->next;
 
-	current = *head;
-	while (current != NULL)
-	{
-		i++;
-		next = current->next;
-		free(current);
-		if (next >= current)
-		{
-			*head = NULL;
-			exit(98);
-		}
-		current = next;
-	}
+        if (current == runner)
+        {
+            current = head;
 
-	*head = NULL;
-	return (i);
+            while (current != runner)
+            {
+                printf("[%p] %s\n", (void *)current, current->str);
+                count++;
+                current = current->next;
+                runner = runner->next;
+            }
+
+            printf("[%p] %s\n", (void *)current, current->str);
+            count++;
+            break;
+        }
+    }
+
+    return (count);
 }
