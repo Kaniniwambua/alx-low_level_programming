@@ -2,7 +2,7 @@
 /**
  * get_bit - returns value of a bit given an index
  * @n: to check the bits
- * index: index starting from 0
+ * @index: index of bit to get
  * Return: value of a bit at index or -1 for error
  */
 int get_bit(unsigned long int n, unsigned int index)
