@@ -3,7 +3,7 @@
  * flip_bits - return number of bits needed to flip
  * @n: the first number
  * @m: the second number
- * Retrun: number of bits to flip
+ * Return: number of bits to flip
  */
 
 unsigned int flip_bits(unsigned long int n, unsigned long int m)
